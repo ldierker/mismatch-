@@ -1,0 +1,13 @@
+1. no high-high saturation
+        -there are some exceptions
+2. most everything goes with jeans
+3. avoid opposite colors
+4. everything goes with black/white
+5. same color top/bottom is out
+        -unless certain degree of saturation difference is met
+6. Dress within a season
+        -sub function season-sort is needed
+7. neutral is safe
+        -all gray is a no no
+
+        
