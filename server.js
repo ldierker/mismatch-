@@ -8,7 +8,7 @@ var upload = multer({
     dest: 'uploads/'
 });
 var fs = require('fs');
-var apikey = "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea"
+var apikey = "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -85,7 +85,7 @@ function compare1(c1) {
         };
     };
     var message_proto = "This piece is is COLOR. Its a very nice color.";
-    message_proto = message_proto.replace("COLOR", c1.label);
+    message_proto = message_proto.replace(/COLOR/, c1.label);
 
     return{
         "message": message_proto
@@ -111,11 +111,13 @@ function compare2(c1, c2) {
         };
     }
     var message_proto = "Your clothes are COLOR1 and COLOR2. The COLOR1 is SAT_COMMENT1 and COLOR2 is SAT_COMMENT2. These colors COMBO_COMMENT";
-    message_proto = message_proto.replace(/COLOR1/, c1.label);
-    message_proto = message_proto.replace(/COLOR2/, c2.label);
-    message_proto = message_proto.replace(/SAT_COMMENT1/, get_sat_comment(s1));
-    message_proto = message_proto.replace(/SAT_COMMENT2/, get_sat_comment(s2));
-    message_proto = message_proto.replace(/SAT_COMMENT2/, get_combo_comment(h1, h2, s1, s2, b1, b2));
+    message_proto = message_proto.replace("COLOR1", c1.label);
+    message_proto = message_proto.replace("COLOR1", c1.label);
+    message_proto = message_proto.replace("COLOR2", c2.label);
+    message_proto = message_proto.replace("COLOR2", c2.label);
+    message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
+    message_proto = message_proto.replace("SAT_COMMENT2", get_sat_comment(s2));
+    message_proto = message_proto.replace("COMBO_COMMENT", get_combo_comment(h1, h2, s1, s2, b1, b2));
     return{
         "message": message_proto
     };
@@ -175,9 +177,9 @@ function compare3 (c1, c2, c3) {
     b3 = hsb3[2];
 
     var message_proto  = "Hi there! Your clothes are COLOR1, COLOR2, and COLOR3.  You're wearing SAT_TYPE. The clothes are BRIGHT_TYPE and HUE_TYPE.";
-    message_proto = message_proto.replace(/COLOR1/, c1.label);
-    message_proto = message_proto.replace(/COLOR2/, c2.label);
-    message_proto = message_proto.replace(/COLOR3/, c3.label);
+    message_proto = message_proto.replace("COLOR1", c1.label);
+    message_proto = message_proto.replace("COLOR2", c2.label);
+    message_proto = message_proto.replace("COLOR3", c3.label);
     var bright_type = "";
     var sat_type = "";
     var hue_type = "";
@@ -254,7 +256,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
     if (numfiles == 0)
         return res.render('formresponse', {"message": "Whoops! Looks like you forgot to upload a file"});
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-        .header("X-Mashape-Key", "apikey")
+        .header("X-Mashape-Key", apikey)
         .attach("image", fs.createReadStream(req.files[0].path))
         .field("palette", "simple")
         .field("sort", "relevance")
@@ -263,7 +265,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
             if (numfiles == 1)
                 return res.render('formresponse',{context: compare1(color1), imgs: req.files});
             unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-                .header("X-Mashape-Key", "apikey")
+                .header("X-Mashape-Key", apikey)
                 .attach("image", fs.createReadStream(req.files[1].path))
                 .field("palette", "simple")
                 .field("sort", "relevance")
@@ -272,7 +274,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                     if (numfiles == 2)
                         return res.render('formresponse', {context : compare2(color1, color2), imgs: req.files});
                     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-                        .header("X-Mashape-Key", "apikey")
+                        .header("X-Mashape-Key", apikey)
                         .attach("image", fs.createReadStream(req.files[2].path))
                         .field("palette", "simple")
                         .field("sort", "relevance")
