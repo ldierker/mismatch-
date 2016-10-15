@@ -34,8 +34,7 @@ body {
 	text-align: center;
 	font-family: "Helvetica";
 	font-weight: lighter;
-	font-size: 3em
-	margin: 0em;
+	font-size: 4em
 	padding: 5em 5em 5em 5em;
 	position: relative;
 }
@@ -47,7 +46,7 @@ body {
 	text-align: center;
 	font-family: "Helvetica";
 	margin: 0em;
-	padding: 3em 5em 4em 5em;
+	padding: 1em 4em 2em 4em;
 	position: relative;
 }
 
@@ -177,4 +176,34 @@ a:hover {
 #submit:hover {
 	background-color: #9c4a3a;
 	border-color: #9c4a3a;
+}
+
+.text-box {
+	background-color:rgba(249, 250, 251, .7);
+	padding: 2em 2em 2em 2em;
+	margin-top: 3em;
+}
+
+.container {
+	text-align: center;
+
+}
+
+#landing-text {
+	text-align: center;
+	font-family: "Helvetica";
+	font-weight: lighter;
+	font-size: 3em;
+	color: 031424;
+}
+
+#landing-text-check {
+	text-align: center;
+	font-family: "Helvetica";
+	font-weight: lighter;
+	font-size: 3em;
+	color: 031424;
+	padding: 1em 1em 1em 1em;
+	margin: 1em 1em 0em 1em;
+	background-color:rgba(249, 250, 251, .7);
 }
