@@ -150,6 +150,68 @@ else{
 }
 }
 
+
+function compare3 (c1, c2, c3) {
+    hsb1 = hexToHSB(c1.color);
+    hsb2 = hexToHSB(c2.color);
+    hsb3 = hexToHSB(c3.color);
+    h1 = hsb1[0];
+    h2 = hsb2[0];
+    h3 = hsb3[0];
+    s1 = hsb1[1];
+    s2 = hsb2[1];
+    s3 = hsb3[1];
+    b1 = hsb1[2];
+    b2 = hsb2[2];
+    b3 = hsb3[2];
+
+    var message_proto  = "Hi there! Your clothes are COLOR1, COLOR2, and COLOR3.  You're wearing SAT_TYPE. The clothes are BRIGHT_TYPE and HUE_TYPE.";
+    message_proto = message_proto.replace("COLOR1", c1.label);
+    message_proto = message_proto.replace("COLOR2", c2.label);
+    message_proto = message_proto.replace("COLOR3", c3.label);
+    var bright_type = "";
+    var sat_type = "";
+    var hue_type = "";
+
+    if ((s1 > 65) && (s2 > 65) && (s3 > 65)) {
+        sat_type = "many bold and vibrant colors";
+    } else if ((s1 > 65) || (s2 > 70) || (s3 > 70)) {
+       sat_type = "a mix of vibrant and and neutral colors.";
+    } else if ((s1 < 60 ) && (s2 < 60) && (s3 < 60)) {
+        sat_type = "all muted, more neutral tones" ;
+    } else if ((s1 < 60 ) || (s2 < 60) || (s3 < 60)) {
+        sat_type = "a mix of muted, more neutral tones, and vibrant colors";
+
+    }
+
+
+
+    if ((b1 > 65) && (b2 > 65) && (b3 > 65)) {
+        bright_type  = "all bright clothes. These are perfect for summer and spring, ";
+    } else if ((b1 > 65) || (b2 > 70) || (b3 > 70)) {
+        bright_type = "a mix of bright and and darker clothes.";
+    } else if ((b1 <= 65) && (b2 <= 70) && (b3 <= 70)) {
+        bright_type = "darker colored clothes, perfect for a winter look,";
+    }
+
+    hdiff1 = Math.abs(h1 - h2);
+    hdiff2 = Math.abs(h1 - h3);
+    hdiff3 = Math.abs(h2 - h3);
+    if (hdiff1.between(120,240) || hdiff2.between(120,240) || hdiff3.between(120,240)) {
+       hue_type = "some colors are highly contrasted and clashing"; 
+    } else if (hdiff1.between(0, 20) && hdiff2.between(0,20) && hdiff3.between(0,20)) {
+        hue_type = "extremely similar and monochromatic in color.";
+    } else if (hdiff1.between(0, 45) && hdiff2.between(0,45) && hdiff3.between(0, 45)) {
+        hue_type = "are similar in color.";
+    } else if (hdiff1.between(0, 100) || hdiff2.between(0, 100) || hdiff3.between(0, 100)) {
+        hue_type = "are very different in color";
+    }
+    message_proto = message_proto.replace("SAT_TYPE", sat_type);
+    message_proto = message_proto.replace("BRIGHT_TYPE", bright_type);
+    message_proto = message_proto.replace("HUE_TYPE", hue_type);
+    return {"message": message_proto};
+}
+
 app.get("/sweatertest", function(req, res) {
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
