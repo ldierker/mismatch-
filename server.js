@@ -118,8 +118,7 @@ function compare2(c1, c2) {
         "message": message_proto
     };
 };
-}
-}
+
 
 function get_combo_comment(h1, h2, s1, s2, b1, b2) {
     h_diff = Math.abs(h1 - h2);
