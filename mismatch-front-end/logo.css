@@ -190,9 +190,9 @@ body {
 .main-text {
 	text-align: center;
 	font-family: "Raleway";
-	font-weight: lighter;
-	font-size: 4em;
-	padding: 5em 5em 5em 5em;
+	font-weight: normal;
+	font-size: 1em;
+	padding: 5em 5em 5em 5em
 	position: relative;
 }
 
@@ -209,7 +209,7 @@ body {
 
 .header-small {
 	background-color:rgba(249, 250, 251, .7);
-	text-align: center;
+	text-align: left;
 	font-family: "Raleway";
 	margin: 0em;
 	padding: 1em 1em 1em 1em;
@@ -231,7 +231,7 @@ body {
 }
 
 .header_info {
-	font-weight: lighter;
+	font-weight: normal;
 	font-size: 2em;
 	color: #d17563;
 }
@@ -257,10 +257,9 @@ body {
 }
 
 .footer_info {
-	font-weight: lighter;
+	font-weight: normal;
 	font-size: 1.5em;
 	color: #d17563;
-	font-family: "Raleway Thin";
 	font-family: "Raleway";
 }
 
@@ -350,15 +349,15 @@ a:hover {
 #landing-text {
 	text-align: center;
 	font-family: "Raleway";
-	font-weight: lighter;
-	font-size: 3em;
+	font-weight: normal;
+	font-size: 2em;
 	color: 031424;
 }
 
 #landing-text-check {
 	text-align: center;
 	font-family: "Raleway";
-	font-weight: lighter;
+	font-weight: normal;
 	font-size: 3em;
 	color: 031424;
 	padding: 1em 1em 1em 1em;
