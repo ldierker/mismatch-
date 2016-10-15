@@ -8,6 +8,22 @@ var upload = multer({
     dest: 'uploads/'
 });
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+
+/* CHANGE THIS WHEN DB GOES LIVE */
+var db_url = "mongodb://localhost:27017/myproject"
+
+
+// Use connect method to connect to the server
+MongoClient.connect(db_url, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected successfully to server");
+
+    db.close();
+});
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
