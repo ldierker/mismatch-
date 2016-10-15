@@ -12,6 +12,41 @@ app.use(express.static(__dirname + "/colortag_testing"));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
+function rgbToHsb (r, g, b) {
+    var max, min, h, s, v, d;
+
+    r = r / 255;
+    g = g / 255;
+    b = b / 255;
+
+    max = Math.max(r, g, b);
+    min = Math.min(r, g, b);
+    v = max;
+
+    d = max - min;
+    s = max === 0 ? 0 : d / max;
+
+    if (max === min) {
+      h = 0; // achromatic
+    } else {
+      switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    // map top 360,100,100
+    h = round(h * 360);
+    s = round(s * 100);
+    v = round(v * 100);
+
+    return [h, s, v];
+  }
+
+
+
 app.get("/sweatertest", function (req,res) {
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
     .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
@@ -42,6 +77,12 @@ app.get('/fileup', function (req,res) {
     console.log("reqed fileup");
     res.render('fileup');
 });
+
+
+
+
+
+
 
 
 app.listen(process.env.PORT || 5000);
