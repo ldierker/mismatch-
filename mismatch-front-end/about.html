@@ -20,6 +20,15 @@
 
 <body>
 
+<script type="text/javascript">
+	window.onload = function () {if ($(window).height() < 900 && $(window).width() <= 960) {
+		document.getElementById("block-text-id").className = 'mobile-text';
+	} else {
+		document.getElementById("block-text-id").className = "center block-text";
+	}}
+
+</script>
+
 	<div>
 		<div class="header-small">
 			<a href="index.html"><img class="logo-format-small" src="logo_v1.png"/></a>
@@ -28,7 +37,7 @@
 
 
 		<div class = "col-sm-10 col-sm-offset-1">
-			<span class="center" id = "block-text_2">
+			<span id = "block-text-id" class="center" >
 				mismatch was created to make fashion more accessible to those with visual impairments, specifically focusing on color blindness. Our application provides a detailed description of the colors of your clothing choices and an analysis of how these colors interact. With this information, you can give your outfit a second look with the click of a button. 
 
 				<br/><br/>
