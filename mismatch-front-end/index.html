@@ -18,12 +18,22 @@
 
 <body>
 
+<script type="text/javascript">
+	window.onload = function () {if ($(window).height() < 900 && $(window).width() <= 960) {
+		document.getElementById("mobile_header").className = 'mobile_mode';
+		document.getElementById("mobile_header_info").className = 'mobile_mode_2';
+	} else {
+		document.getElementById("mobile_header").className = "header_name";
+		document.getElementById("mobile_header_info").className = 'header_info';
+	}}
+
+</script>
 	<div class = "header">
 		<img class = "logo-format" src="logo_v1.png"/>
-		<span class = "header_name"> mismatch</span>
+		<span id = "mobile_header" class = "header_name"> mismatch</span>
 		<br />	
 		<br />	
-		<div class = "header_info">Check your colors</div>
+		<div id = "mobile_header_info" class = "header_info">Check your colors</div>
 	</div>
 	<div class = "col-sm-8 col-sm-offset-2"> <div class="text-box"><div class = "main"> 
 

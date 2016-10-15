@@ -415,3 +415,24 @@ a:hover {
 	padding-bottom: 5em;
 	margin-bottom: 4em;
 }
+
+#mobile_header {
+
+}
+
+#mobile_header_info {
+
+}
+
+.mobile_mode {
+	font-size: 4em;
+	letter-spacing: .1em;
+	font-weight: lighter;
+	color: 031424;
+}
+
+.mobile_mode_2 {
+	font-weight: normal;
+	font-size: 1.5em;
+	color: #d17563;
+}
