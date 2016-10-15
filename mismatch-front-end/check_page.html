@@ -5,98 +5,101 @@
 <head>
 	<meta charset="utf">
 	<title> Mismatch</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="logo.css" media="screen">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="file-upload.js"></script>
+	<script type="text/javascript" src="file-upload.js"></script>
 
 </head>
 
 <body>
 
-<div>
-	<div class = "header-small">
-		<img class = "logo-format-small" src="logo_v1.png"/>
-		<span class = "header_name_small"> mismatch</span>
-	</div>
+	<div>
+		<div class="header-small">
+			<img class="logo-format-small" src="logo_v1.png" />
+			<span class="header_name_small"> mismatch</span>
+		</div>
 
-	<div class = "main"> 
+		<div class="main">
 
 		<span class = "center">
 		<div class = "col-sm-10 col-sm-offset-1">
 			<div id = "landing-text-check">
+			<span class="center">
+			<span class = "main-text">
 				Submit your photos here to recieve color information feedback
 			</div>
 			<br/>
 		</div>
-	
-	<form method="post" enctype="multipart/form-data" action="/colorof">
 
-		<div class="container">
-		  
-		  <div class="form-group">
-		    <input type="file" name="img[]" class="file">
-		    <div class="input-group col-xs-12">
-		      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-		      <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
-		      <span class="input-group-btn">
+
+		<form method="post" enctype="multipart/form-data" action="/match3">
+
+
+				<div class="container">
+					<div class="form-group">
+						<input type="file" name="img[]" class="file">
+						<div class="input-group col-xs-12">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+							<input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
+							<span class="input-group-btn">
 		        <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
 		      </span>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <input type="file" name="img[]" class="file">
-		    <div class="input-group col-xs-12">
-		      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-		      <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
-		      <span class="input-group-btn">
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="file" name="img[]" class="file">
+						<div class="input-group col-xs-12">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+							<input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
+							<span class="input-group-btn">
 		        <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
 		      </span>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <input type="file" name="img[]" class="file">
-		    <div class="input-group col-xs-12">
-		      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-		      <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
-		      <span class="input-group-btn">
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="file" name="img[]" class="file">
+						<div class="input-group col-xs-12">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+							<input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
+							<span class="input-group-btn">
 		        <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
 		      </span>
-		    </div>
-		  </div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="container">
+					<p>
+						<button class="btn btn-success btn-lg pull-right" id="submit"> Submit Photos</button>
+					</p>
+
+				</div>
+
+			</form>
+
+			</span>
+
+
 
 		</div>
 
-
-		<div class="container">		  
-		      <p>
-		        	<button class="btn btn-success btn-lg pull-right" id="submit"> Submit Photos</button>
-		      </p>
-
-		</div>
-
-        </form>
-
-		</span>
-
-
-
-	</div>
-
-	<div class = "footer">
-		<span class = "center ">
+		<div class="footer">
+			<span class="center ">
 			<br/>
 			<span class = "footer_info">The Team &middot; About mismatch &middot; help </span>
-		</span>
-	</div>
+			</span>
+		</div>
 
-</div>
+	</div>
 
 </body>
 
