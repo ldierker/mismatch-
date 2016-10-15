@@ -27,3 +27,35 @@ height:100px;
 .tied-bottom {
 
 }
+
+.logo-format {
+	width: 8%;
+	padding-right: 2em;
+	padding-left: 2em;
+	
+}
+
+/*header rules*/
+.header{
+
+	background-color: #f9fafb;
+	text-align: center;
+	font-family: "Helvetica";
+	margin: 0em;
+	padding: 3em 5em 4em 5em;
+	position: relative;
+}
+
+.header_name {
+	font-weight: lighter;
+	font-size: 5em;
+	letter-spacing: .2em;
+}
+
+.header_info {
+	font-weight: lighter;
+	font-size: 2em;
+	font-style: italic;
+	color: #728fac;
+}
+
