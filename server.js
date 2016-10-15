@@ -247,6 +247,7 @@ app.post("/colorof", upload.single('photo'), function(req, res) {
 
 
 app.post("/match3", upload.array("photos", 3), function(req, res) {
+    console.log(req.files);
     var numfiles = req.files.length;
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
@@ -256,7 +257,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
         .end(function(result) {
             var color1 = result.body.tags[0];
             if (numfiles == 1)
-                return res.send(compare1(color1));
+                return res.render('formresponse',compare1(color1));
             unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
                 .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
                 .attach("image", fs.createReadStream(req.files[1].path))
@@ -265,7 +266,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                 .end(function(result) {
                     var color2 = result.body.tags[0];
                     if (numfiles == 2)
-                        return res.send(compare2(color1, color2));
+                        return res.render('formresponse',compare2(color1, color2));
                     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
                         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
                         .attach("image", fs.createReadStream(req.files[2].path))
@@ -274,7 +275,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                         .end(function(result) {
                             var color3 = result.body.tags[0];
                             if (numfiles == 3)
-                                return res.send(compare3(color1, color2, color3));
+                                return res.send('formresponse', compare3(color1, color2, color3));
                         });
                 });
         });
