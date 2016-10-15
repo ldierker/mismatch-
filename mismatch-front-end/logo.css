@@ -1,0 +1,111 @@
+
+body {
+	background-color: #ffffff;
+	font-family: "Helvetica";
+	color: #1b1c1d;
+	margin: 0em;
+	padding: 0em ;
+
+	background-image: url("geo.png")
+}
+
+
+.logo-format {
+	width: 8%;
+	padding-right: 2em;
+	padding-left: 2em;
+
+}
+
+
+
+.main {
+	margin: 2em;
+
+}
+
+.main-text {
+	text-align: center;
+	font-family: "Helvetica";
+	font-weight: lighter;
+	font-size: 3em
+	margin: 0em;
+	padding: 5em 5em 5em 5em;
+	position: relative;
+}
+
+/*header rules*/
+.header{
+
+	background-color:rgba(249, 250, 251, .7);
+	text-align: center;
+	font-family: "Helvetica";
+	margin: 0em;
+	padding: 3em 5em 4em 5em;
+	position: relative;
+}
+
+.header_name {
+	font-weight: lighter;
+	font-size: 5em;
+	letter-spacing: .2em;
+	color: 031424;
+}
+
+.header_info {
+	font-weight: lighter;
+	font-size: 2em;
+	color: #d17563;
+}
+
+
+/*covers iphone 4 to iphone 6+ */
+@media screen and (min-device-width: 320px) and (max-device-width: 736px){
+  .inline_elements {
+    display: block;
+    width: 98%;
+  }
+}
+
+
+
+.footer {
+	background-color: rgba(249, 250, 251, .7);
+	margin: 0em;
+	height: 5em;
+	position: absolute;
+	bottom: 0px;
+	width: 100%
+}
+
+.footer_info {
+	font-weight: lighter;
+	font-size: 1.5em;
+	color: #d17563;
+}
+
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	text-align: center;
+}
+
+
+a {
+	text-align: center;
+	font-weight: lighter;
+	color:  #1b1c1d;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #516e8a;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
