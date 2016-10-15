@@ -89,13 +89,9 @@ function compare2(c1, c2) {
             message: "You're wearing a lot of gray. Nice groutfit!"
         };
     }
-    var message_proto = "Your clothes are COLOR1 and COLOR2. The COLOR1 is SAT_COMMENT1 and COLOR2 is SAT_COMMENT2. These colors COMBO_COMMENT";
+    var message_proto = "Hey there! Your clothes are COLOR1 and COLOR2. They're SAT_TYPE colors and the shades are CONT_TYPE. These colors HUE_TYPE";
     message_proto = message_proto.replace("COLOR1", c1.label);
     message_proto = message_proto.replace("COLOR2", c2.label);
-    message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
-    message_proto = message_proto.replace("SAT_COMMENT2",  get_sat_comment(s2));
-    message_proto = message_proto.replace("SAT_COMMENT2",  get_combo_comment(s2));
-
     h_diff = Math.abs(h1 - h2);
     s_diff = Math.abs(s1 - s2);
     b_diff = Math.abs(b1 - b2);
@@ -127,27 +123,6 @@ function compare2(c1, c2) {
             'abs_diff': abs_diff
         };
     }
-}
-function get_combo_comment(){
-
-}
-
-function get_sat_comment(sat){
-if (sat<20){
-    return "a very dulled color"
-}
-else if (sat>=20 && sat<40){
-    return "a rather muted color"
-}
-else if (sat>=40 && sat<60){
-    return "neither particularly bright or dull"
-}
-else if (sat>=60 && sat<80){
-    return "a strongly saturagted color"
-}
-else{
-    return "a bold, bright color"
-}
 }
 
 app.get("/sweatertest", function(req, res) {
