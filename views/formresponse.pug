@@ -26,7 +26,9 @@ html
 
             div(class = "col-sm-10 col-sm-offset-1")
                 span(class="center", id = "block-text")
-                    p=message
+                    each val in imgs
+                        img(src=val.path)
+                    p=context.message
                         
 
 
