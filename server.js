@@ -71,7 +71,7 @@ Number.prototype.between = function(a, b) {
     return (this >= a && this <= b);
 };
 
-function comparecolors(c1, c2) {
+function compare2(c1, c2) {
     hsb1 = hexToHSB(c1.color);
     hsb2 = hexToHSB(c2.color);
     h1 = hsb1[0];
@@ -95,7 +95,7 @@ function comparecolors(c1, c2) {
     h_diff = Math.abs(h1 - h2);
     s_diff = Math.abs(s1 - s2);
     b_diff = Math.abs(b1 - b2);
-//everything above is better than the stuff below
+    //everything above is better than the stuff below
 
     if (b1 < 25 && b2 < 25) {
         return {
@@ -152,7 +152,8 @@ app.post("/colorof", upload.single('photo'), function(req, res) {
 });
 
 
-app.post("/match2", upload.array("photos", 2), function(req, res) {
+app.post("/match3", upload.array("photos", 3), function(req, res) {
+    var numfiles = req.files.length;
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
         .attach("image", fs.createReadStream(req.files[0].path))
@@ -160,6 +161,8 @@ app.post("/match2", upload.array("photos", 2), function(req, res) {
         .field("sort", "relevance")
         .end(function(result) {
             var color1 = result.body.tags[0];
+            if (numfiles == 1)
+                return res.send(compare1(color1));
             unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
                 .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
                 .attach("image", fs.createReadStream(req.files[1].path))
@@ -167,10 +170,24 @@ app.post("/match2", upload.array("photos", 2), function(req, res) {
                 .field("sort", "relevance")
                 .end(function(result) {
                     var color2 = result.body.tags[0];
-                    res.send(comparecolors(color1, color2));
+                    if (numfiles == 2)
+                        return res.send(compare2(color1, color2));
+                    unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
+                        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+                        .attach("image", fs.createReadStream(req.files[2].path))
+                        .field("palette", "simple")
+                        .field("sort", "relevance")
+                        .end(function(result) {
+                            var color3 = result.body.tags[0];
+                            if (numfiles == 3)
+                                return res.send(compare3(color1, color2, color3));
+                        });
                 });
         });
 });
+
+
+
 
 app.get('/fileup', function(req, res) {
     console.log("reqed fileup");
