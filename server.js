@@ -94,7 +94,7 @@ function compare2(c1, c2) {
     message_proto = message_proto.replace("COLOR2", c2.label);
     message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
     message_proto = message_proto.replace("SAT_COMMENT2",  get_sat_comment(s2));
-    message_proto = message_proto.replace("SAT_COMMENT2",  get_combo_comment(s2));
+    message_proto = message_proto.replace("SAT_COMMENT2",  get_combo_comment(h1, h2, s1, s2, b1, b2));
 
     h_diff = Math.abs(h1 - h2);
     s_diff = Math.abs(s1 - s2);
@@ -128,7 +128,7 @@ function compare2(c1, c2) {
         };
     }
 }
-function get_combo_comment(){
+function get_combo_comment(h1, h2, s1, s2, b1, b2){
 
 }
 
