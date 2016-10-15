@@ -47,7 +47,8 @@ function rgbToHsb (r, g, b) {
     return [h, s, v];
   }
 
-
+function comparecolors (c1, c2) {
+}
 
 app.get("/sweatertest", function (req,res) {
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
@@ -74,6 +75,28 @@ app.post("/colorof", upload.single('photo'),  function (req,res) {
         res.send(result.body.tags[0]);
     });
 }); 
+
+
+app.post("/match2", upload.array("photos", 2), function (req,res) {
+    var paths = req.file.paths;
+    unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
+    .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+    .attach("image", fs.createReadStream(paths[0]))
+    .field("palette", "simple")
+    .field("sort", "relevance")
+    .end(function (result) {
+        var color1 = result.body.tags[0];
+        unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
+        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+        .attach("image", fs.createReadStream(paths[1]))
+        .field("palette", "simple")
+        .field("sort", "relevance")
+        .end(function (result) {
+            var color2 = result.body.tags[0];
+            res.send(comparecolors(color1, color2));
+        });
+    });
+}
 
 app.get('/fileup', function (req,res) {
     console.log("reqed fileup");
