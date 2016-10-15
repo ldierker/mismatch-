@@ -111,11 +111,11 @@ function compare2(c1, c2) {
         };
     }
     var message_proto = "Your clothes are COLOR1 and COLOR2. The COLOR1 is SAT_COMMENT1 and COLOR2 is SAT_COMMENT2. These colors COMBO_COMMENT";
-    message_proto = message_proto.replace("COLOR1", c1.label);
-    message_proto = message_proto.replace("COLOR2", c2.label);
-    message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
-    message_proto = message_proto.replace("SAT_COMMENT2", get_sat_comment(s2));
-    message_proto = message_proto.replace("SAT_COMMENT2", get_combo_comment(h1, h2, s1, s2, b1, b2));
+    message_proto = message_proto.replace(/COLOR1/, c1.label);
+    message_proto = message_proto.replace(/COLOR2/, c2.label);
+    message_proto = message_proto.replace(/SAT_COMMENT1/, get_sat_comment(s1));
+    message_proto = message_proto.replace(/SAT_COMMENT2/, get_sat_comment(s2));
+    message_proto = message_proto.replace(/SAT_COMMENT2/, get_combo_comment(h1, h2, s1, s2, b1, b2));
     return{
         "message": message_proto
     };
@@ -175,9 +175,9 @@ function compare3 (c1, c2, c3) {
     b3 = hsb3[2];
 
     var message_proto  = "Hi there! Your clothes are COLOR1, COLOR2, and COLOR3.  You're wearing SAT_TYPE. The clothes are BRIGHT_TYPE and HUE_TYPE.";
-    message_proto = message_proto.replace("COLOR1", c1.label);
-    message_proto = message_proto.replace("COLOR2", c2.label);
-    message_proto = message_proto.replace("COLOR3", c3.label);
+    message_proto = message_proto.replace(/COLOR1/, c1.label);
+    message_proto = message_proto.replace(/COLOR2/, c2.label);
+    message_proto = message_proto.replace(/COLOR3/, c3.label);
     var bright_type = "";
     var sat_type = "";
     var hue_type = "";
