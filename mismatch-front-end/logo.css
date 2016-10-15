@@ -251,7 +251,7 @@ body {
 	background-color: rgba(249, 250, 251, .7);
 	margin: 0em;
 	height: 5em;
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
 	width: 100%;
 }
@@ -385,4 +385,9 @@ a:hover {
 
 .pink:hover{
 	color: #9c4a3a;
+}
+
+.pro-photo {
+	height: 5%;
+	border-radius: 200%;
 }
