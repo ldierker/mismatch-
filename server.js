@@ -8,6 +8,7 @@ var upload = multer({
     dest: 'uploads/'
 });
 var fs = require('fs');
+var apikey = "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea"
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -206,7 +207,7 @@ function compare3 (c1, c2, c3) {
     hdiff2 = Math.abs(h1 - h3);
     hdiff3 = Math.abs(h2 - h3);
     if (hdiff1.between(120,240) || hdiff2.between(120,240) || hdiff3.between(120,240)) {
-       hue_type = "some colors are highly contrasted and clashing"; 
+       hue_type = "some colors are highly contrasted and clashing";
     } else if (hdiff1.between(0, 20) && hdiff2.between(0,20) && hdiff3.between(0,20)) {
         hue_type = "extremely similar and monochromatic in color.";
     } else if (hdiff1.between(0, 45) && hdiff2.between(0,45) && hdiff3.between(0, 45)) {
@@ -222,7 +223,7 @@ function compare3 (c1, c2, c3) {
 
 app.get("/sweatertest", function(req, res) {
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+        .header("X-Mashape-Key", "apikey")
         .attach("image", fs.createReadStream("sweater.jpeg"))
         .field("palette", "simple")
         .field("sort", "relevance")
@@ -236,7 +237,7 @@ app.get("/sweatertest", function(req, res) {
 app.post("/colorof", upload.single('photo'), function(req, res) {
     var path = req.file.path;
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+        .header("X-Mashape-Key", "apikey")
         .attach("image", fs.createReadStream(path))
         .field("palette", "simple")
         .field("sort", "relevance")
@@ -250,10 +251,10 @@ app.post("/colorof", upload.single('photo'), function(req, res) {
 app.post("/match3", upload.array("photos", 3), function(req, res) {
     console.log(req.files);
     var numfiles = req.files.length;
-    if (numfiles == 0) 
+    if (numfiles == 0)
         return res.render('formresponse', {"message": "Whoops! Looks like you forgot to upload a file"});
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+        .header("X-Mashape-Key", "apikey")
         .attach("image", fs.createReadStream(req.files[0].path))
         .field("palette", "simple")
         .field("sort", "relevance")
@@ -262,7 +263,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
             if (numfiles == 1)
                 return res.render('formresponse',{context: compare1(color1), imgs: req.files});
             unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-                .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+                .header("X-Mashape-Key", "apikey")
                 .attach("image", fs.createReadStream(req.files[1].path))
                 .field("palette", "simple")
                 .field("sort", "relevance")
@@ -271,7 +272,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                     if (numfiles == 2)
                         return res.render('formresponse', {context : compare2(color1, color2), imgs: req.files});
                     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
-                        .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
+                        .header("X-Mashape-Key", "apikey")
                         .attach("image", fs.createReadStream(req.files[2].path))
                         .field("palette", "simple")
                         .field("sort", "relevance")
