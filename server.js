@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use("/uploads",express.static(__dirname + "/uploads"));
 app.use(express.static(__dirname + "/mismatch-front-end"));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
@@ -259,7 +260,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
         .end(function(result) {
             var color1 = result.body.tags[0];
             if (numfiles == 1)
-                return res.render('formresponse',compare1(color1));
+                return res.render('formresponse',{context: compare1(color1), imgs: req.files});
             unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
                 .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
                 .attach("image", fs.createReadStream(req.files[1].path))
@@ -268,7 +269,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                 .end(function(result) {
                     var color2 = result.body.tags[0];
                     if (numfiles == 2)
-                        return res.render('formresponse',compare2(color1, color2));
+                        return res.render('formresponse', {context : compare2(color1, color2), imgs: req.files});
                     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
                         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
                         .attach("image", fs.createReadStream(req.files[2].path))
@@ -277,12 +278,11 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                         .end(function(result) {
                             var color3 = result.body.tags[0];
                             if (numfiles == 3)
-                                return res.render('formresponse', compare3(color1, color2, color3));
+                                return res.render('formresponse', {context: compare3(color1, color2, color3), imgs: req.files});
                         });
                 });
         });
 });
-
 
 
 
