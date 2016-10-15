@@ -11,10 +11,16 @@ body {
 
 
 .logo-format {
-	width: 8%;
+	width: 10em;
 	padding-right: 2em;
 	padding-left: 2em;
 
+}
+
+.logo-format-small {
+	width: 5em;
+	padding-right: 1em;
+	padding-left: 1em;
 }
 
 
@@ -45,9 +51,25 @@ body {
 	position: relative;
 }
 
+.header-small {
+	background-color:rgba(249, 250, 251, .7);
+	text-align: left;
+	font-family: "Helvetica";
+	margin: 0em;
+	padding: 1em 1em 1em 1em;
+	position: relative;
+}
+
 .header_name {
 	font-weight: lighter;
 	font-size: 5em;
+	letter-spacing: .2em;
+	color: 031424;
+}
+
+.header_name_small {
+	font-weight: lighter;
+	font-size: 2em;
 	letter-spacing: .2em;
 	color: 031424;
 }
@@ -116,3 +138,33 @@ a:hover {
   visibility: hidden;
   position: absolute;
 }
+
+
+.comments {
+  .leaveComment {
+    .btn-sm {
+      border-radius: 0 0 4px 4px;
+      margin: -1px 8px 0 0;
+      border-top: none;
+    }
+    .btn-group {
+      margin: -1px 0 0 8px;
+      .btn-sm {
+        margin: 0;
+      }
+    }
+  }
+  .comment {
+    clear: both;
+    time {
+      font-size: 12px;
+      color: #999;
+    }
+    .name {
+      text-align: right;
+      color: #777;
+      font-style: italic;
+    }
+  }
+}
+
