@@ -109,3 +109,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+
+
+
+.file {
+  visibility: hidden;
+  position: absolute;
+}
