@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(express.static(__dirname + "/colortag_testing"));
+app.use(express.static(__dirname + "/mismatch-front-end"));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
