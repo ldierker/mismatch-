@@ -66,7 +66,6 @@ function rgbToHsb(r, g, b) {
 
     return [h, s, v];
 }
-<<<<<<< HEAD
 
 Number.prototype.between = function(a, b) {
     return (this >= a && this <= b);
