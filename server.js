@@ -14,11 +14,13 @@ app.set('views', __dirname + '/views');
 
 
 /*taken from https://github.com/carloscabo/colz/blob/master/public/js/colz.class.js */
-function rgbFromHex (num) {
-    red = num[0];
-    green = num[1]
-    blue = num[2];
-    rgbToHsb(red, green, blue);
+function hexToHSB (hcode) {
+    console.log(hcode);
+    r = parseInt(hcode.slice(1,3), 16);
+    g = parseInt(hcode.slice(3,5), 16);
+    b = parseInt(hcode.slice(5,7), 16);
+    console.log(hcode, r,g,b);
+    return rgbToHsb (r, g, b);
 }
 
 function rgbToHsb (r, g, b) {
@@ -47,14 +49,44 @@ function rgbToHsb (r, g, b) {
     }
 
     // map top 360,100,100
-    h = round(h * 360);
-    s = round(s * 100);
-    v = round(v * 100);
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    v = Math.round(v * 100);
 
     return [h, s, v];
   }
 
 function comparecolors (c1, c2) {
+    hsb1 = hexToHSB(c1.color);
+    hsb2 = hexToHSB(c2.color);
+    h1 = hsb1[0];
+    h2 = hsb2[0];
+    s1 = hsb1[1];
+    s2 = hsb2[1];
+    b1 = hsb1[2];
+    b2 = hsb2[2];
+    console.log(hsb1,hsb2);
+    if ((s1 < 20) && (s2 < 20) && (b1 > 35) && (b2 > 35)) {
+        return {message: "You're wearing a lot of gray. Nice groutfit!"};
+    }
+    if (b1 < 25 && b2 < 25) {
+        return {message: "You're wearing dark colors that will go well together."};
+    }
+    if ((b1 < 20 || b2 < 20) && b1 < 60 && b2 < 60) {
+        return {message: "You're wearing a mix of a dark neutral and a lighter colors. These clothes work well and don't provide too much contrast."};
+    }
+    if (Math.abs(b1 - b2) > 50) {
+        return {message: "You're wearing a high contrast outfit. This is bold statement."};
+    }
+
+    abs_diff = Math.abs(h1 - h2);
+    if ((abs_diff < 200) && (abs_diff > 160)) {
+        console.log("comp");
+        return "{'type': 'complementary'}";
+    } else{
+        console.log(abs_diff);
+        return {'abs_diff': abs_diff};
+    }
 }
 
 app.get("/sweatertest", function (req,res) {
@@ -81,21 +113,20 @@ app.post("/colorof", upload.single('photo'),  function (req,res) {
           console.log(result.status, result.headers, result.body);
         res.send(result.body.tags[0]);
     });
-}); 
+});
 
 
 app.post("/match2", upload.array("photos", 2), function (req,res) {
-    var paths = req.file.paths;
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
     .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
-    .attach("image", fs.createReadStream(paths[0]))
+    .attach("image", fs.createReadStream(req.files[0].path))
     .field("palette", "simple")
     .field("sort", "relevance")
     .end(function (result) {
         var color1 = result.body.tags[0];
         unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
-        .attach("image", fs.createReadStream(paths[1]))
+        .attach("image", fs.createReadStream(req.files[1].path))
         .field("palette", "simple")
         .field("sort", "relevance")
         .end(function (result) {
@@ -103,14 +134,16 @@ app.post("/match2", upload.array("photos", 2), function (req,res) {
             res.send(comparecolors(color1, color2));
         });
     });
-}
+});
 
 app.get('/fileup', function (req,res) {
     console.log("reqed fileup");
     res.render('fileup');
 });
 
-
+app.get('/twoup', function (req,res) {
+    res.render('twoup');
+});
 
 
 
