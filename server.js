@@ -250,7 +250,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
     console.log(req.files);
     var numfiles = req.files.length;
     if (numfiles == 0) 
-        return {"message": "Whoops! Looks like you forgot to upload a file"};
+        return res.render('formresponse', {"message": "Whoops! Looks like you forgot to upload a file"});
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
         .header("X-Mashape-Key", "0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea")
         .attach("image", fs.createReadStream(req.files[0].path))
@@ -277,7 +277,7 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
                         .end(function(result) {
                             var color3 = result.body.tags[0];
                             if (numfiles == 3)
-                                return res.send('formresponse', compare3(color1, color2, color3));
+                                return res.render('formresponse', compare3(color1, color2, color3));
                         });
                 });
         });
