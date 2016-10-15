@@ -20,6 +20,10 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "multer": "^1.2.0",
+    "pug": "^2.0.0-beta6",
+    "unirest": "^0.5.1",
     "validator": "^6.0.0"
   }
 }
