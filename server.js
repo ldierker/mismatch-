@@ -71,6 +71,25 @@ Number.prototype.between = function(a, b) {
     return (this >= a && this <= b);
 };
 
+function compare1(c1) {
+    hsb1 = hexToHSB(c1.color);
+    h1 = hsb1[0];
+    s1 = hsb1[1];
+    b1 = hsb1[2];
+
+    if (s1 < 20 && b1.between(5, 85)) {
+        return {
+            "message": "That is gray."
+        };
+    };
+    var message_proto = "This piece is is COLOR. Its a very nice color.";
+    message_proto = message_proto.replace("COLOR", c1.label);
+
+    return{
+        "message": message_proto
+    };
+}
+
 function compare2(c1, c2) {
     hsb1 = hexToHSB(c1.color);
     hsb2 = hexToHSB(c2.color);
@@ -86,7 +105,7 @@ function compare2(c1, c2) {
     console.log(hsb1, hsb2);
     if ((s1 < 20) && (s2 < 20) && b1.between(5, 85) && b2.between(5, 85)) {
         return {
-            message: "You're wearing a lot of gray. Nice groutfit!"
+            "message": "You're wearing a lot of gray. Nice groutfit!"
         };
     }
     var message_proto = "Your clothes are COLOR1 and COLOR2. The COLOR1 is SAT_COMMENT1 and COLOR2 is SAT_COMMENT2. These colors COMBO_COMMENT";
@@ -95,6 +114,9 @@ function compare2(c1, c2) {
     message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
     message_proto = message_proto.replace("SAT_COMMENT2", get_sat_comment(s2));
     message_proto = message_proto.replace("SAT_COMMENT2", get_combo_comment(h1, h2, s1, s2, b1, b2));
+    return{
+        "message": message_proto
+    };
 };
 }
 }
