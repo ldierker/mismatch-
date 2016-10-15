@@ -70,8 +70,6 @@ function rgbToHsb(r, g, b) {
 Number.prototype.between = function(a, b) {
     return (this >= a && this <= b);
 };
-=======
->>>>>>> a7913388bbd8a99293ab2bbcdc8357ff1217653c
 
 function comparecolors(c1, c2) {
     hsb1 = hexToHSB(c1.color);
@@ -82,16 +80,11 @@ function comparecolors(c1, c2) {
     s2 = hsb2[1];
     b1 = hsb1[2];
     b2 = hsb2[2];
-<<<<<<< HEAD
 
 
 
     console.log(hsb1, hsb2);
     if ((s1 < 20) && (s2 < 20) && b1.between(5, 85) && b2.between(5, 85)) {
-=======
-    console.log(hsb1, hsb2);
-    if ((s1 < 20) && (s2 < 20) && (b1 > 35) && (b2 > 35)) {
->>>>>>> a7913388bbd8a99293ab2bbcdc8357ff1217653c
         return {
             message: "You're wearing a lot of gray. Nice groutfit!"
         };
