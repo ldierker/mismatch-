@@ -20,7 +20,7 @@
 	font-style: normal;
 }
 
-}
+
 
 @font-face {
 	font-family: 'Raleway';
@@ -158,7 +158,7 @@
 
 body {
 	background-color: #ffffff;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 	color: #1b1c1d;
 	margin: 0em;
 	padding: 0em ;
@@ -189,7 +189,7 @@ body {
 
 .main-text {
 	text-align: center;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 	font-weight: lighter;
 	font-size: 4em
 	padding: 5em 5em 5em 5em;
@@ -201,7 +201,7 @@ body {
 
 	background-color:rgba(249, 250, 251, .7);
 	text-align: center;
-	font-family: "Raleway Thin";
+	font-family: "Raleway";
 	margin: 0em;
 	padding: 1em 4em 2em 4em;
 	position: relative;
@@ -210,7 +210,7 @@ body {
 .header-small {
 	background-color:rgba(249, 250, 251, .7);
 	text-align: left;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 	margin: 0em;
 	padding: 1em 1em 1em 1em;
 	position: relative;
@@ -260,7 +260,7 @@ body {
 	font-weight: lighter;
 	font-size: 1.5em;
 	color: #d17563;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 }
 
 
@@ -349,7 +349,7 @@ a:hover {
 
 #landing-text {
 	text-align: center;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 	font-weight: lighter;
 	font-size: 3em;
 	color: 031424;
@@ -357,7 +357,7 @@ a:hover {
 
 #landing-text-check {
 	text-align: center;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway";
 	font-weight: lighter;
 	font-size: 3em;
 	color: 031424;
