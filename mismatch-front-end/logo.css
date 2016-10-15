@@ -191,7 +191,7 @@ body {
 	text-align: center;
 	font-family: "Raleway";
 	font-weight: lighter;
-	font-size: 4em
+	font-size: 4em;
 	padding: 5em 5em 5em 5em;
 	position: relative;
 }
@@ -262,7 +262,7 @@ body {
 	color: #d17563;
 	font-family: "Raleway Thin";
 	font-family: "Raleway";
-
+}
 
 .center {
 	display: block;
