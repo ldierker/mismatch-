@@ -12,6 +12,8 @@ app.use(express.static(__dirname + "/colortag_testing"));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
+
+/*taken from https://github.com/carloscabo/colz/blob/master/public/js/colz.class.js */
 function rgbToHsb (r, g, b) {
     var max, min, h, s, v, d;
 
