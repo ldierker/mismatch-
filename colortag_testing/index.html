@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        ColorTag API Testing
+    </title>
+    <script>
+        function runtest() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("output").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "POSThttps://apicloud-colortag.p.mashape.com/tag-file.json", true);
+            xhr.setRequestHeader('X-Mashape-Key', '0oXi6uvKF4mshYOnD1PRAiv18GEEp1dycKgjsnv3XLvqGL8xea');
+            xhttp.send('image=sweater.jpeg&palette=simple&sort=relevance');
+        }
+    </script>
+</head>
+
+<body>
+    Making an ajax call to the colortag api with this image
+    <img src="sweater.jpeg" alt="colortest" height="400" width="400">
+    <button type="button" onClick="runtest()">Run Test</button>
+    <div id="output">
+    </div>
+</body>
+
+</html>
