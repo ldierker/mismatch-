@@ -21,6 +21,29 @@
 
 <body>
 
+<script type="text/javascript">
+	window.onload = function () 
+	{if ($(window).height() < 900 && $(window).width() <= 860) {
+		document.getElementById("photo-1").className = "mobile_photo";
+		document.getElementById("photo-2").className = "mobile_photo";
+		document.getElementById("photo-3").className = "mobile_photo";
+		document.getElementById("photo-4").className = "mobile_photo";
+		document.getElementById("photo-5").className = "mobile_photo";
+		document.getElementById("block-text-id").className = "center mobile-text";
+
+	} else {
+		document.getElementById("photo-1").className = "col-md-3 pro-photo";
+		document.getElementById("photo-2").className = "col-md-3 pro-photo";
+		document.getElementById("photo-3").className = "col-md-3 pro-photo";
+		document.getElementById("photo-4").className = "col-md-3 pro-photo";
+		document.getElementById("photo-5").className = "col-md-3 pro-photo";
+		document.getElementById("block-text-id").className = "center block-text";
+	}
+}
+
+</script>
+
+
 	<div>
 		<div class="header-small">
 			<a href="index.html"><img class="logo-format-small" src="logo_v1.png"/></a>
@@ -29,26 +52,26 @@
 
 
 		<div class = "col-sm-10 col-sm-offset-1">
-			<span class="center" id = "block-text">
+			<span id = "block-text-id" class="center block-text" >
 			<span class = "row">
-				<img class="col-md-3 pro-photo" src="daniel_photo.jpg"/>
-				<span class="col-md-8"> Daniel Navon. Junior majoring in Computer Science at Tufts University. Back end web development, Node.js, Heroku. </span>
+				<img id = "photo-1" class="col-md-3 pro-photo" src="daniel_photo.jpg"/>
+				<span id = "text-1" class="col-md-8"> Daniel Navon. Junior majoring in Computer Science at Tufts University. Back e1nd web development, Node.js, Heroku. </span>
 			</span>
 			<span class = "row">
-				<img class="col-md-3 pro-photo" src="lauren_photo.jpg"/>
-				<span class="col-md-8"> Lauren Dierker. Junior majoring in Computer Science at Tufts University. Front end web development, CSS, HTML5, logo Design, branding.</span>
+				<img id = "photo-2" class="col-md-3 pro-photo" src="lauren_photo.jpg"/>
+				<span id = "text-2" class="col-md-8"> Lauren Dierker. Junior majoring in Computer Science at Tufts University. Front end web development, CSS, HTML5, logo Design, branding.</span>
 			</span>
 			<span class = "row">
-				<img class="col-md-3 pro-photo" src="tom_photo.jpg"/>
-				<span class="col-md-8">Tom Plano. Junior majoring in Computer Science at Wentworth Institute of Technology. Backend development, Heroku, APIs, algorithms.</span>
+				<img id = "photo-3" class="col-md-3 pro-photo" src="tom_photo.jpg"/>
+				<span id = "text-3" class="col-md-8">Tom Plano. Junior majoring in Computer Science at Wentworth Institute of Technology. Backend development, Heroku, APIs, algorithms.</span>
 			</span>
 			<span class = "row">
-				<img class="col-md-3 pro-photo" src="robert_photo.jpg"/>
-				<span class="col-md-8"> Robert Goodfellow. Junior majoring in Computer Science at Tufts University. API research guru, backend development.</span>
+				<img id = "photo-4" class="col-md-3 pro-photo" src="robert_photo.jpg"/>
+				<span id = "text-4" class="col-md-8"> Robert Goodfellow. Junior majoring in Computer Science at Tufts University. API research guru, backend development.</span>
 			</span>
 			<span class = "row">
-				<img class="col-md-3 pro-photo" src="leah_photo.jpg"/>
-				<span class="col-md-8"> Leah Holden. Junior majoring in Computer Science and English at Tufts University. Front end web development, team name, branding.</span>
+				<img id = "photo-5" class="col-md-3 pro-photo" src="leah_photo.jpg"/>
+				<span id = "text-5" class="col-md-8"> Leah Holden. Junior majoring in Computer Science and English at Tufts University. Front end web development, team name, branding.</span>
 			</span>
 
 			</span>

@@ -365,7 +365,11 @@ a:hover {
 	background-color:rgba(249, 250, 251, .7);
 }
 
-#block-text {
+#block-text-id {
+
+}
+
+.block-text {
 	font-size: 2em;
 	text-align: justify;
 	font-family: "Raleway";
@@ -435,4 +439,42 @@ a:hover {
 	font-weight: normal;
 	font-size: 1.5em;
 	color: #d17563;
+}
+
+
+#photo-1 {
+}
+
+#photo-2 {
+}
+
+
+#photo-3 {
+}
+
+#photo-4 {
+}
+
+
+#photo-5 {
+}
+
+
+.mobile_photo {
+	max-width: 50%
+
+}
+
+.mobile-text {
+	display: inline-block;
+	font-size: 1em;
+	text-align: justify;
+	font-family: "Raleway";
+	font-weight: normal;
+	color: 031424;
+	padding: 1em 1em 1em 1em;
+	margin: 1em 1em 0em 1em;
+	background-color:rgba(249, 250, 251, .7);
+}
+
 }
