@@ -210,7 +210,7 @@ body {
 .header-small {
 	background-color:rgba(249, 250, 251, .7);
 	text-align: left;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway Thin";
 	margin: 0em;
 	padding: 1em 1em 1em 1em;
 	position: relative;
@@ -260,7 +260,7 @@ body {
 	font-weight: lighter;
 	font-size: 1.5em;
 	color: #d17563;
-	font-family: "Raleway-Regular";
+	font-family: "Raleway Thin";
 }
 
 
