@@ -14,6 +14,13 @@ app.set('views', __dirname + '/views');
 
 
 /*taken from https://github.com/carloscabo/colz/blob/master/public/js/colz.class.js */
+function rgbFromHex (num) {
+    red = num[0];
+    green = num[1]
+    blue = num[2];
+    rgbToHsb(red, green, blue);
+}
+
 function rgbToHsb (r, g, b) {
     var max, min, h, s, v, d;
 
