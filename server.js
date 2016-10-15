@@ -93,62 +93,48 @@ function compare2(c1, c2) {
     message_proto = message_proto.replace("COLOR1", c1.label);
     message_proto = message_proto.replace("COLOR2", c2.label);
     message_proto = message_proto.replace("SAT_COMMENT1", get_sat_comment(s1));
-    message_proto = message_proto.replace("SAT_COMMENT2",  get_sat_comment(s2));
-    message_proto = message_proto.replace("SAT_COMMENT2",  get_combo_comment(h1, h2, s1, s2, b1, b2));
+    message_proto = message_proto.replace("SAT_COMMENT2", get_sat_comment(s2));
+    message_proto = message_proto.replace("SAT_COMMENT2", get_combo_comment(h1, h2, s1, s2, b1, b2));
+};
+}
+}
 
+function get_combo_comment(h1, h2, s1, s2, b1, b2) {
     h_diff = Math.abs(h1 - h2);
     s_diff = Math.abs(s1 - s2);
     b_diff = Math.abs(b1 - b2);
-    //everything above is better than the stuff below
-
-    if (b1 < 25 && b2 < 25) {
-        return {
-            message: "You're wearing dark colors that will go well together."
-        };
-    }
-    if ((b1 < 20 || b2 < 20) && b1 < 60 && b2 < 60) {
-        return {
-            message: "You're wearing a mix of a dark neutral and a lighter colors. These clothes work well and don't provide too much contrast."
-        };
-    }
-    if (Math.abs(b1 - b2) > 50) {
-        return {
-            message: "You're wearing a high contrast outfit. This is bold statement."
-        };
-    }
-
-    abs_diff = Math.abs(h1 - h2);
-    if ((abs_diff < 200) && (abs_diff > 160)) {
-        console.log("comp");
-        return "{'type': 'complementary'}";
+    var response_string = "";
+    if (170 <= h_diff && h_diff <= 190) {
+        response_string += "are opposite colors. These dont quite match the way you would like."
+    } else if (110 <= h_diff && h_diff <= 130) {
+        response_string += "are two good colors, and they also match! Well done!"
+    } else if (80 <= h_diff && h_diff <= 100) {
+        response_string += "a good match!! Looking great!"
+    } else if (0 <= h_diff && h_diff <= 20) {
+        if (0 <= s_diff && s_diff <= 10) {
+            response_string += "are maybe too similar. Consider changing something "
+        }
+        response_string += "are about the same. Congrats! You match!"
     } else {
-        console.log(abs_diff);
-        return {
-            'abs_diff': abs_diff
-        };
+        response_string += "are not in any recognized color pairing. You do you!"
+    }
+    return response_string;
+}
+
+function get_sat_comment(sat) {
+    if (sat < 20) {
+        return "a very dulled color"
+    } else if (sat >= 20 && sat < 40) {
+        return "a rather muted color"
+    } else if (sat >= 40 && sat < 60) {
+        return "neither particularly bright or dull"
+    } else if (sat >= 60 && sat < 80) {
+        return "a strongly saturagted color"
+    } else {
+        return "a bold, bright color"
     }
 }
-function get_combo_comment(h1, h2, s1, s2, b1, b2){
 
-}
-
-function get_sat_comment(sat){
-if (sat<20){
-    return "a very dulled color"
-}
-else if (sat>=20 && sat<40){
-    return "a rather muted color"
-}
-else if (sat>=40 && sat<60){
-    return "neither particularly bright or dull"
-}
-else if (sat>=60 && sat<80){
-    return "a strongly saturagted color"
-}
-else{
-    return "a bold, bright color"
-}
-}
 
 app.get("/sweatertest", function(req, res) {
     unirest.post("https://apicloud-colortag.p.mashape.com/tag-file.json")
