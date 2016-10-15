@@ -1,7 +1,164 @@
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Thin.eot');
+	src: local('fonts/Raleway Thin'), local('Raleway-Thin'),
+		url('fonts/Raleway-Thin.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Thin.woff') format('woff'),
+		url('fonts/Raleway-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Bold.eot');
+	src: local('fonts/Raleway Bold'), local('Raleway-Bold'),
+		url('fonts/Raleway-Bold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Bold.woff') format('woff'),
+		url('fonts/Raleway-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-LightItalic.eot');
+	src: local('fonts/Raleway Light'), local('Raleway-Light'),
+		url('fonts/Raleway-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-LightItalic.woff') format('woff'),
+		url('fonts/Raleway-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-BoldItalic.eot');
+	src: local('fonts/Raleway BoldItalic'), local('Raleway-BoldItalic'),
+		url('fonts/Raleway-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-BoldItalic.woff') format('woff'),
+		url('fonts/Raleway-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Black.eot');
+	src: local('fonts/Raleway Black'), local('Raleway-Black'),
+		url('fonts/Raleway-Black.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Black.woff') format('woff'),
+		url('fonts/Raleway-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-SemiBold.eot');
+	src: local('fonts/Raleway SemiBold'), local('Raleway-SemiBold'),
+		url('fonts/Raleway-SemiBold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-SemiBold.woff') format('woff'),
+		url('fonts/Raleway-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Italic.eot');
+	src: local('fonts/Raleway Italic'), local('Raleway-Italic'),
+		url('fonts/Raleway-Italic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Italic.woff') format('woff'),
+		url('fonts/Raleway-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-MediumItalic.eot');
+	src: local('fonts/Raleway MediumItalic'), local('Raleway-MediumItalic'),
+		url('fonts/Raleway-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-MediumItalic.woff') format('woff'),
+		url('fonts/Raleway-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-ExtraBold.eot');
+	src: local('fonts/Raleway ExtraBold'), local('Raleway-ExtraBold'),
+		url('fonts/Raleway-ExtraBold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-ExtraBold.woff') format('woff'),
+		url('fonts/Raleway-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-BlackItalic.eot');
+	src: url('fonts/Raleway-BlackItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-BlackItalic.woff') format('woff'),
+		url('fonts/Raleway-BlackItalic.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Medium.eot');
+	src: url('fonts/Raleway-Medium.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Medium.woff') format('woff'),
+		url('fonts/Raleway-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-ThinItalic.eot');
+	src: url('fonts/Raleway-ThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-ThinItalic.woff') format('woff'),
+		url('fonts/Raleway-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Light.eot');
+	src: local('fonts/Raleway Light'), local('Raleway-Light'),
+		url('fonts/Raleway-Light.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Light.woff') format('woff'),
+		url('fonts/Raleway-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('fonts/Raleway-Regular.eot');
+	src: local('fonts/Raleway Regular'), local('Raleway-Regular'),
+		url('fonts/Raleway-Regular.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Raleway-Regular.woff') format('woff'),
+		url('fonts/Raleway-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 
 body {
 	background-color: #ffffff;
-	font-family: "Helvetica";
+	font-family: "Raleway-Regular";
 	color: #1b1c1d;
 	margin: 0em;
 	padding: 0em ;
@@ -9,7 +166,7 @@ body {
 	background-image: url("geo.png")
 }
 
-
+ 
 .logo-format {
 	width: 10em;
 	padding-right: 2em;
@@ -32,7 +189,7 @@ body {
 
 .main-text {
 	text-align: center;
-	font-family: "Helvetica";
+	font-family: "Raleway-Regular";
 	font-weight: lighter;
 	font-size: 4em
 	padding: 5em 5em 5em 5em;
@@ -44,7 +201,7 @@ body {
 
 	background-color:rgba(249, 250, 251, .7);
 	text-align: center;
-	font-family: "Helvetica";
+	font-family: "Raleway Thin";
 	margin: 0em;
 	padding: 1em 4em 2em 4em;
 	position: relative;
@@ -53,7 +210,7 @@ body {
 .header-small {
 	background-color:rgba(249, 250, 251, .7);
 	text-align: left;
-	font-family: "Helvetica";
+	font-family: "Raleway-Regular";
 	margin: 0em;
 	padding: 1em 1em 1em 1em;
 	position: relative;
@@ -103,6 +260,7 @@ body {
 	font-weight: lighter;
 	font-size: 1.5em;
 	color: #d17563;
+	font-family: "Raleway-Regular";
 }
 
 
@@ -191,7 +349,7 @@ a:hover {
 
 #landing-text {
 	text-align: center;
-	font-family: "Helvetica";
+	font-family: "Raleway-Regular";
 	font-weight: lighter;
 	font-size: 3em;
 	color: 031424;
@@ -199,7 +357,7 @@ a:hover {
 
 #landing-text-check {
 	text-align: center;
-	font-family: "Helvetica";
+	font-family: "Raleway-Regular";
 	font-weight: lighter;
 	font-size: 3em;
 	color: 031424;
