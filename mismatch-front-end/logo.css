@@ -253,7 +253,7 @@ body {
 	height: 5em;
 	position: absolute;
 	bottom: 0px;
-	width: 100%
+	width: 100%;
 }
 
 .footer_info {
@@ -363,4 +363,26 @@ a:hover {
 	padding: 1em 1em 1em 1em;
 	margin: 1em 1em 0em 1em;
 	background-color:rgba(249, 250, 251, .7);
+}
+
+#block-text {
+	font-size: 2em;
+	text-align: justify;
+	font-family: "Raleway";
+	font-weight: normal;
+	color: 031424;
+	padding: 2em 2em 2em 2em;
+	margin: 1em 1em 0em 1em;
+	background-color:rgba(249, 250, 251, .7);
+}
+
+
+.pink {
+	color: #d17563;
+	font-weight: normal;
+	font-family: "Raleway";
+}
+
+.pink:hover{
+	color: #9c4a3a;
 }
