@@ -415,3 +415,23 @@ a:hover {
 	padding-bottom: 5em;
 	margin-bottom: 4em;
 }
+
+#home-page-box {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        height: 50%;
+        width: 75%;
+}
+
+#register-box {
+        float: left;
+        height: 100%;
+        width: 50%;
+}
+
+#login-box {
+        float: right;
+        height: 100%;
+        width: 50%;
+}

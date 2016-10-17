@@ -14,6 +14,9 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Localhost while still in development -->
+<script src="localhost:5000/webcam.js"></script>
 </head>
 
 <body>
@@ -27,14 +30,19 @@
 	</div>
 	<!-- Login by taking picture and comparing it to server, which gets compared to the image stored in mongo. 
              Returns ID key in a cookie for the user that was stored with their image. UNIMPLEMENTED -->
-        <div id = "capture-frame">
-                <div id = "">
-                        <a href="register.html">Register</a>
-                </div>
-                <div id = "login">
-                        <a href="login.html">Login</a>
-                </div>
-        </div>
+        <div id = "camera"></div>
+
+        <script language="JavaScript">
+            Webcam.attach( '#camera' );
+        
+            function take_snapshot() {
+                Webcam.snap( function(data_uri) {
+                    document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+                } );
+            }
+        </script> 
+ 
+        <a href="javascript:void(take_snapshot())">Take Snapshot</a>
 	
 	<div class = "footer">
 		<span class = "center ">
