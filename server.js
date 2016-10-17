@@ -9,18 +9,16 @@ var upload = multer({
 });
 var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
+var format = require('util').format;
 var assert = require('assert');
+var sha512 = require('sha512');
 
 /* CHANGE THIS WHEN DB GOES LIVE */
-var db_url = "mongodb://localhost:27017/myproject"
-
+var mongo_uri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost:27017/myproject";
 
 // Use connect method to connect to the server
-MongoClient.connect(db_url, function(err, db) {
-    assert.equal(null, err);
-    console.log("Connected successfully to server");
-
-    db.close();
+MongoClient.connect(mongo_uri, function(err, db_connection) {
+    db = db_connection;
 });
 
 
@@ -32,7 +30,10 @@ app.use("/uploads",express.static(__dirname + "/uploads"));
 app.use(express.static(__dirname + "/mismatch-front-end"));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
+var FPP_KEY = "3e5f7cd4072acd1f5fe91d30b570d05f";
+var FPP_SECRET = "p3jqSp3wH-gtOSS_ZjGu3pFj-RTp9rOt";
 
+// END CLERICAL INFORMATION
 
 function hexToHSB(hcode) {
     console.log(hcode);
@@ -300,6 +301,83 @@ app.post("/match3", upload.array("photos", 3), function(req, res) {
         });
 });
 
+/* Sign-up function */
+
+app.post('/register', function(req, res) {
+    console.log("Registration attempted");
+    var pic = req.query.pic;
+    var hashed_pic = sha512(pic);
+    var username = req.query.username;
+
+    var to_register = { 
+        "pic": pic,
+        "ID" : hashed_pic,
+        "name": username
+    };
+   
+     
+    if (pic == null || username == null) {
+        to_register = {"error" : "Try again!"}
+    }
+
+    response.set('Content-Type', 'text/html');
+
+    db.collection('users', function(error1, users) {
+        users.insert(to_register, function(error2, saved) {
+            if (error1 || error2) {
+                response.send(500);
+            }
+            else {
+                // Set session_id as hash in cookie and render the user's wardrobe page
+                res.render("success");
+            }
+        });
+    });
+    // Train api on face
+});
+
+/* Sign-in function */
+app.post('/sign-in', function(req, res) {
+    consloe.log("Sign-in attempted");
+    var picture = request.query.pic;
+    var username = request.query.name;
+
+    if (pic == null || username == null) {
+        res.send(500)
+    }
+
+    response.set('Content-Type', 'text/html');
+
+    db.collection('users', function(error1, users) {
+        users.find({name: username}).toArray(function(error2, cursor) {
+            if (error1 || error2) {
+                response.send(500);
+            }
+            else {
+                // Train Face++ API on stored face, and compare it to the new pic. 
+                for (var i = 0; i < cursor.length; i++) {
+                    unirest.post("https://apius.faceplusplus.com/v2/train/verify?api_secret=" + FPP_SECRET + "&api_key=" + FPP_KEY + "&person_name=" + username)
+                        .send(pic)
+                        .end(function (res1) {
+                             unirest.post("https://apius.faceplusplus.com/v2/recognition/verify?api_secret=" + FPP_SECRET + "&api_key=" + FPP_KEY + "&person_name=" + username)
+                                .send(picture)
+                                .end(function (res2) {
+                                     response = JSON.parse(res2);
+                                     if (response.is_same_person) {
+                                         // Welcome, set cookie and render wardrobe page
+                                         res.render("success");
+                                     }
+                                     if (i == (cursor.length - 1)) {
+                                         // Could not be found. Want to register a new account?
+                                         res.render("fail");
+                                     }
+                                }
+                        }
+                }
+            }
+        });
+    });
+});
 
 
 app.get('/fileup', function(req, res) {
@@ -310,11 +388,6 @@ app.get('/fileup', function(req, res) {
 app.get('/twoup', function(req, res) {
     res.render('twoup');
 });
-
-
-
-
-
 
 app.listen(process.env.PORT || 5000);
 console.log("server is running on port 5000");
